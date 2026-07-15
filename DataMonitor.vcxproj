@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
 
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Json.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="PersonRepository.cpp" />
