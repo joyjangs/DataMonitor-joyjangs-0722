@@ -152,6 +152,7 @@
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="PersonRepository.cpp" />
     <ClCompile Include="EventLogMonitor.cpp" />
+    <ClCompile Include="StatsMonitor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Json.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="PersonRepository.h" />
     <ClInclude Include="IRepositoryObserver.h" />
     <ClInclude Include="EventLogMonitor.h" />
+    <ClInclude Include="StatsMonitor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
