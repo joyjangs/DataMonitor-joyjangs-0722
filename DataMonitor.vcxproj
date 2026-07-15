@@ -150,10 +150,13 @@
   <ItemGroup>
     <ClCompile Include="Json.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="PersonRepository.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Json.h" />
     <ClInclude Include="Person.h" />
+    <ClInclude Include="PersonRepository.h" />
+    <ClInclude Include="IRepositoryObserver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
