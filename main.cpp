@@ -24,6 +24,12 @@
 #include <limits>
 #include <string>
 
+// Windows.h는 기본적으로 max/min을 매크로로 정의하는데, 이 매크로가
+// std::numeric_limits<...>::max() 같은 표준 라이브러리 호출과 충돌합니다.
+// NOMINMAX를 Windows.h보다 먼저 정의해서 이 매크로 정의 자체를 막습니다.
+#define NOMINMAX
+#include <Windows.h>
+
 #include "PersonRepository.h"
 #include "EventLogMonitor.h"
 #include "StatsMonitor.h"
@@ -100,6 +106,15 @@ namespace
 
 int main()
 {
+    // 이 프로젝트는 /utf-8 컴파일 옵션으로 빌드되어, 소스 코드에 적힌 한글 문자열
+    // 리터럴("이름: " 등)이 실행 파일 안에 "UTF-8 바이트"로 그대로 저장됩니다.
+    // 반면 Windows 콘솔(cmd.exe)의 기본 코드페이지는 한국어 환경에서도 CP949(EUC-KR
+    // 계열)인 경우가 많아서, UTF-8 바이트를 CP949 규칙으로 잘못 해석해 한글이
+    // 깨져 보이는 문제가 생깁니다. 프로그램 시작 시 콘솔의 입출력 코드페이지를
+    // 우리가 실제로 사용하는 인코딩인 UTF-8(65001)로 맞춰서 이 문제를 해결합니다.
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+
     // 1) 데이터 저장소 준비: 프로그램 시작 시 기존 people.json을 읽어옵니다.
     PersonRepository repository(kDataFilePath);
     repository.Load();
