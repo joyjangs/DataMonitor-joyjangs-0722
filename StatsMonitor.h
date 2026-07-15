@@ -11,6 +11,8 @@
 // 데이터가 바뀔 때마다(OnCreate/OnUpdate/OnDelete/OnExternalReload) 전체 목록을
 // 다시 훑어보면서
 //   - 기본 통계: 전체 인원 수, 평균/최소/최대 나이
+//   - 나이대별 분포: 10대/20대/.../90대 구간별 인원수, 전체 대비 비율(%),
+//     그리고 그 비율을 한눈에 볼 수 있는 막대 그래프
 //   - 이상치: 나이가 비정상적인 값(0 이하이거나 120 초과), 이름/이메일이 비어있음,
 //             이메일 중복
 // 을 계산해서 콘솔에 보여줍니다. "이상치가 있다"는 사실 자체가 데이터 입력 과정에
@@ -37,4 +39,8 @@ public:
 private:
     int minValidAge_;
     int maxValidAge_;
+
+    // 나이대별(10대/20대/.../90대) 인원수, 비율, 막대 그래프를 출력합니다.
+    // PrintReport() 내부에서만 사용하는 도우미이므로 private으로 둡니다.
+    void PrintAgeDistribution(const std::vector<Person>& people) const;
 };
